@@ -4,12 +4,47 @@ import logo from '../images/logo-adalab.png';
 import logoFop from '../images/logo-fop.png';
 import ls from '../service/localStorage';
 import '../styles/App.scss';
+import { useState } from 'react';
+
 
 const Landing = ({ setDataCardList }) => {
   const dataCardLS = ls.get('dataCardLS', []);
 
+  
   //const handleBtnRemoveCard = (ev) => {};
-
+  const [favourite, setFavourite] = useState(false)
+  
+ const handleToogleFavourite = (ev) => {
+  const clickedId = ev.currentTarget.id;
+  console.log("me han clicado")
+ setFavourite(!favourite)
+  if(favourite === true){
+    const foundFavourite = dataCardLS.find((fav) => fav.id === clickedId);
+    
+    console.log(foundFavourite)
+    setDataCardList({...dataCardLS, [clickedId]: 'favourite' })
+    
+    
+    
+  }
+  //  const clickedSerieId = ev.currentTarget.id;
+  //   const foundSerie = series.find((serie) => serie.id === clickedSerieId);
+  //   foundSerie.isFavorite = !foundSerie.isFavorite;
+  //   setSeries([...series]);
+  
+    // const clickedId = ev.currentTarget.id;
+    // const foundFavourite = dataCardLS.find((fav) => fav.id === clickedId);
+    
+    console.log(favourite)
+    // setSeries([...series]);
+  };
+//   setFavourite(!favourite)
+//    if(favourite === true) {
+//     // setFavourite2({...favourite2, [ev.target.id]: 'favourite'})
+//     console.log(ev.target.id)
+//   }
+//  }
+ 
   const renderCard = () => {
     return dataCardLS.map((obj, index) => {
       return (
@@ -59,6 +94,7 @@ const Landing = ({ setDataCardList }) => {
             />
             <p className="autor-job">{obj.job}</p>
             <p className="autor-name">{obj.autor}</p>
+            <i className={`fa-solid fa-star ${obj.isFavorite}`}  onClick={handleToogleFavourite} id={index}></i>
           </section>
         </li>
       );

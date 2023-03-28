@@ -22,6 +22,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
     job: '',
     image: '',
     photo: '',
+    isFavourite: 'false'
   };
 
   const [data, setData] = useState(ls.get('dataLS', defaultData));
