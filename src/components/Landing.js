@@ -9,24 +9,29 @@ import { useState } from 'react';
 
 const Landing = ({ setDataCardList }) => {
   const dataCardLS = ls.get('dataCardLS', []);
-
+  // const newData = [...dataCardLS[clickedId], isFavourite: 'false']
   
   //const handleBtnRemoveCard = (ev) => {};
   const [favourite, setFavourite] = useState(false)
   
  const handleToogleFavourite = (ev) => {
   const clickedId = ev.currentTarget.id;
+  const newData = [{...dataCardLS[clickedId], isFavourite: 'false'}]
   console.log("me han clicado")
- setFavourite(!favourite)
-  if(favourite === true){
-    const foundFavourite = dataCardLS.find((fav) => fav.id === clickedId);
-    
+  setFavourite(!favourite)
+ console.log(newData)
+ console.log(favourite)
+//  if(isFavourite === true){
+
+   const foundFavourite = newData.find((fav) => fav.id === clickedId);
+   foundFavourite.isFavourite = !foundFavourite.isFavourite;
     console.log(foundFavourite)
-    setDataCardList({...dataCardLS, [clickedId]: 'favourite' })
+  //   console.log(foundFavourite)
+  //   setDataCardList({...dataCardLS, [clickedId]: 'false' })
     
     
     
-  }
+   
   //  const clickedSerieId = ev.currentTarget.id;
   //   const foundSerie = series.find((serie) => serie.id === clickedSerieId);
   //   foundSerie.isFavorite = !foundSerie.isFavorite;
@@ -35,20 +40,15 @@ const Landing = ({ setDataCardList }) => {
     // const clickedId = ev.currentTarget.id;
     // const foundFavourite = dataCardLS.find((fav) => fav.id === clickedId);
     
-    console.log(favourite)
+    // console.log(favourite)
     // setSeries([...series]);
   };
-//   setFavourite(!favourite)
-//    if(favourite === true) {
-//     // setFavourite2({...favourite2, [ev.target.id]: 'favourite'})
-//     console.log(ev.target.id)
-//   }
-//  }
+  
  
   const renderCard = () => {
     return dataCardLS.map((obj, index) => {
       return (
-        <li key={index} className="landing-card">
+        <li key={index} className="landing-card" id={index}>
           <div
             className="landing-card-background"
             style={{
@@ -94,7 +94,7 @@ const Landing = ({ setDataCardList }) => {
             />
             <p className="autor-job">{obj.job}</p>
             <p className="autor-name">{obj.autor}</p>
-            <i className={`fa-solid fa-star ${obj.isFavorite}`}  onClick={handleToogleFavourite} id={index}></i>
+            <i className={`fa-solid fa-star ${favourite ? 'favourite' : ''}`}  onClick={handleToogleFavourite} id={index}></i>
           </section>
         </li>
       );
