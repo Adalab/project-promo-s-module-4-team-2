@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.e8175977.css",
-    "main.js": "./static/js/main.3134896c.js",
+    "main.css": "./static/css/main.dade301d.css",
+    "main.js": "./static/js/main.1dcf21a6.js",
     "static/media/preview.jpg": "./static/media/preview.abd0ad42ba71920b539f.jpg",
     "static/media/logo-fop.png": "./static/media/logo-fop.0de2373064021bdb7d40.png",
     "static/media/icono.png": "./static/media/icono.efe57296f39329b43b69.png",
     "index.html": "./index.html",
-    "main.e8175977.css.map": "./static/css/main.e8175977.css.map",
-    "main.3134896c.js.map": "./static/js/main.3134896c.js.map"
+    "main.dade301d.css.map": "./static/css/main.dade301d.css.map",
+    "main.1dcf21a6.js.map": "./static/js/main.1dcf21a6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e8175977.css",
-    "static/js/main.3134896c.js"
+    "static/css/main.dade301d.css",
+    "static/js/main.1dcf21a6.js"
   ]
 }
